@@ -1,0 +1,51 @@
+name: CodeQL Analysis
+
+on: [pull_request, push]
+
+jobs:
+  analyse:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+
+    permissions:
+      security-events: write
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Retrieve Yarn Cache Directory
+        id: yarn-cache
+        run: |
+          echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Use Cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
+
+      - name: Install Dependencies
+        run: |
+          yarn install --prefer-offline
+
+      - name: Build
+        run: |
+          yarn clean
+          yarn build
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1
