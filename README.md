@@ -13,6 +13,12 @@
   <h1></h1>
 </div>
 
+## Contributing
+
+Thanks for taking the time to contribute! Before you get started, please take a moment to read through our [contributing guide](https://github.com/eels/next-purge-css-modules/blob/main/.github/CONTRIBUTING.md). The focus area for `next-purge-css-modules` right now is fixing potential bugs.
+
+However, all issues and PRs are welcome!
+
 ## License
 
 MIT - see the [LICENSE.md](https://github.com/eels/next-purge-css-modules/blob/main/LICENSE.md) file for details
