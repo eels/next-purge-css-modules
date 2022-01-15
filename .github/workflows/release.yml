@@ -1,0 +1,82 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    branches:
+      - main
+    inputs:
+      version:
+        description: Select version to publish
+        options:
+          - patch
+          - minor
+          - major
+        required: true
+        type: choice
+
+jobs:
+  release:
+    name: Release Package to NPM
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set Git User Config Details
+        run: |
+          git config --global user.email "liam@liam.codes"
+          git config --global user.name "Liam Howell"
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2.5.1
+        with:
+          always-auth: true
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org
+
+      - name: Retrieve Yarn Cache Directory
+        id: yarn-cache
+        run: |
+          echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Use Cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
+
+      - name: Install Dependencies
+        run: |
+          yarn install --prefer-offline
+
+      - name: Test Code
+        run: |
+          yarn test
+
+      - name: Bump Package Version & Generate Changelog
+        run: |
+          yarn version --${{ github.event.inputs.version }}
+          yarn changelog
+
+      - name: Publish Package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          yarn publish --non-interactive
+
+      - name: Push Version Update & Tags
+        env:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION=$(node -p -e "require('./package.json').version")
+          git add CHANGELOG.md && git commit -m "docs: update v$VERSION changelog"
+          git push
+          git push --tags
