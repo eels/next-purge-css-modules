@@ -21,7 +21,7 @@
     }
   },
   "scripts": {
-    "build": "microbundle --entry ./src/index.ts --raw --no-sourcemap",
+    "build": "microbundle --entry ./src/index.ts --raw --no-sourcemap --target node",
     "changelog": "auto-changelog -b 10 -l 10 -t keepachangelog --hide-credit --sort-commits subject",
     "clean": "rimraf ./dist",
     "format": "prettier './{src,types}/**/*.ts' --check",
