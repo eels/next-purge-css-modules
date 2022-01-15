@@ -31,7 +31,7 @@
     "lint:types": "tsc --noEmit",
     "prepack": "yarn clean && yarn build",
     "prepare": "husky install",
-    "test": "jest --coverage --passWithNoTests"
+    "test": "jest --coverage"
   },
   "files": [
     "dist/",
