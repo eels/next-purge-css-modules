@@ -24,9 +24,9 @@
     "build": "microbundle --entry ./src/index.ts --raw --no-sourcemap",
     "changelog": "auto-changelog -b 10 -l 10 -t keepachangelog --hide-credit --sort-commits subject",
     "clean": "rimraf ./dist",
-    "format": "prettier './src/**/*.ts' --check",
+    "format": "prettier './{src,types}/**/*.ts' --check",
     "format:fix": "yarn format --write",
-    "lint": "eslint './src/**/*.ts' --cache",
+    "lint": "eslint './{src,types}/**/*.ts' --cache",
     "lint:fix": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
     "prepack": "yarn clean && yarn build",
@@ -34,6 +34,7 @@
   },
   "files": [
     "dist/",
+    "types/index.d.ts",
     "LICENSE.md",
     "package.json",
     "README.md"
@@ -70,6 +71,7 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.1.7",
     "microbundle": "^0.14.2",
+    "next": "^12.0.8",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.5.4"
