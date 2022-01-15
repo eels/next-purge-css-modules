@@ -1,0 +1,17 @@
+{
+  "collectCoverageFrom": ["src/**/*.{ts,tsx}"],
+
+  "moduleDirectories": ["node_modules", "src", "test", "types"],
+
+  "moduleFileExtensions": ["js", "ts", "tsx"],
+
+  "moduleNameMapper": {
+    "@src/(.*)": "<rootDir>/src/$1",
+    "@test/(.*)": "<rootDir>/test/$1",
+    "@types": "<rootDir>/types"
+  },
+
+  "roots": ["<rootDir>/test/"],
+
+  "testEnvironment": "node"
+}

@@ -30,7 +30,8 @@
     "lint:fix": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
     "prepack": "yarn clean && yarn build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "jest --coverage --passWithNoTests"
   },
   "files": [
     "dist/",
@@ -53,6 +54,7 @@
     "@commitlint/cli": "^16.0.1",
     "@commitlint/config-conventional": "^16.0.0",
     "@types/glob": "^7.2.0",
+    "@types/jest": "^27.0.2",
     "@types/node": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
@@ -71,6 +73,7 @@
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-plugin-standard": "^5.0.0",
     "husky": "^7.0.4",
+    "jest": "^27.3.1",
     "lint-staged": "^12.1.7",
     "microbundle": "^0.14.2",
     "next": "^12.0.8",
