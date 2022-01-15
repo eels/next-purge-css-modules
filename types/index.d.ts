@@ -14,3 +14,9 @@ export type WebpackFactoryArgs = ExtractFnArgs<Config['webpack']>;
 export type WebpackConfig = WebpackFactoryArgs['0'];
 
 export type WebpackContext = WebpackFactoryArgs['1'];
+
+export type WebpackModuleLoader = { loader: string };
+
+export type WebpackModuleRule = { test: RegExp; use: WebpackModuleLoader[] };
+
+export type WebpackModuleMultiRule = { oneOf?: WebpackModuleRule[] };

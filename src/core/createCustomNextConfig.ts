@@ -1,3 +1,4 @@
+import createCustomWebpackConfig from '@src/lib/createCustomWebpackConfig';
 import path from 'path';
 import type { Config, WebpackConfig, WebpackContext, WebpackFactoryArgs } from '@types';
 
@@ -11,17 +12,17 @@ const initialDefaultConfig: Config = {
   },
 };
 
-export default function createCustomNextConfig(nextConfig: Config = initialDefaultConfig) {
-  return <Config>Object.assign({}, nextConfig, {
+export default function createCustomNextConfig(nextConfig: Config = {}) {
+  return <Config>Object.assign({}, initialDefaultConfig, nextConfig, {
     webpack: function (config: WebpackConfig, { dev }: WebpackContext) {
       const webpackFactoryArgs = (<unknown>arguments) as WebpackFactoryArgs;
-      const shouldPurgeCSS = dev && !nextConfig.purgeCSSModules?.enableDevPurge;
+      const shouldPurgeCSS = !dev || nextConfig.purgeCSSModules?.enableDevPurge;
 
       if (nextConfig.webpack) {
         config = nextConfig.webpack.apply(null, webpackFactoryArgs);
       }
 
-      return shouldPurgeCSS ? config : config;
+      return shouldPurgeCSS ? createCustomWebpackConfig(config, nextConfig) : config;
     },
   });
 }

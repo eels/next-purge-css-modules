@@ -41,6 +41,7 @@
         "count": 1
       }
     ],
+    "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
     "no-unused-vars": "off",
     "prettier/prettier": "error",
