@@ -5,6 +5,10 @@ jest.mock('@src/lib/createGlobPathArray', () => jest.fn((paths) => paths));
 jest.mock('postcss', () => jest.fn());
 
 describe('lib/createLoader', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should return an object', () => {
     const output = createLoader('example');
 
