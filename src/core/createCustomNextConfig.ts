@@ -1,8 +1,8 @@
 import createCustomWebpackConfig from '@src/lib/createCustomWebpackConfig';
 import path from 'path';
-import type { Config, WebpackConfig, WebpackContext, WebpackFactoryArgs } from '@types';
+import type { Config, WebpackConfig, WebpackContext } from '@types';
 
-const initialDefaultConfig: Config = {
+export const initialDefaultConfig: Config = {
   purgeCSSModules: {
     content: [
       path.join(process.cwd(), 'pages/**/*.{js,jsx,ts,tsx}'),
@@ -13,16 +13,22 @@ const initialDefaultConfig: Config = {
 };
 
 export default function createCustomNextConfig(nextConfig: Config = {}) {
-  return <Config>Object.assign({}, initialDefaultConfig, nextConfig, {
-    webpack: function (config: WebpackConfig, { dev }: WebpackContext) {
-      const webpackFactoryArgs = (<unknown>arguments) as WebpackFactoryArgs;
-      const shouldPurgeCSS = !dev || nextConfig.purgeCSSModules?.enableDevPurge;
+  return {
+    ...nextConfig,
 
-      if (nextConfig.webpack) {
-        config = nextConfig.webpack.apply(null, webpackFactoryArgs);
+    purgeCSSModules: {
+      ...initialDefaultConfig.purgeCSSModules,
+      ...nextConfig.purgeCSSModules,
+    },
+
+    webpack: function (config: WebpackConfig, context: WebpackContext) {
+      if (typeof nextConfig.webpack === 'function') {
+        config = nextConfig.webpack(config, context);
       }
+
+      const shouldPurgeCSS = !context.dev || context.config.purgeCSSModules?.enableDevPurge;
 
       return shouldPurgeCSS ? createCustomWebpackConfig(config, nextConfig) : config;
     },
-  });
+  };
 }
