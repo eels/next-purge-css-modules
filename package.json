@@ -40,6 +40,14 @@
     "package.json",
     "README.md"
   ],
+  "keywords": [
+    "css",
+    "css-modules",
+    "nextjs",
+    "nextjs-plugin",
+    "purgecss",
+    "scss"
+  ],
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^4.1.3",
     "glob": "^7.2.0",
