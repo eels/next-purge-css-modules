@@ -1,7 +1,7 @@
 {
   "name": "next-purge-css-modules",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easily remove unused css-module code in your Next.js application",
   "author": "Liam Howell <liam@liam.codes>",
   "homepage": "https://github.com/eels/next-purge-css-modules#readme",
