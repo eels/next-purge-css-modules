@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.1](https://github.com/eels/next-purge-css-modules/compare/v1.0.0...v1.0.1) - 2022-01-17
+
+### Commits
+
+- build: update dependencies [`3d3351a`](https://github.com/eels/next-purge-css-modules/commit/3d3351a2a8a2929e05381347ef0111b8b200b379)
+- chore: add src directory to jest roots [`ee6915d`](https://github.com/eels/next-purge-css-modules/commit/ee6915d8a7c3484554f7fee3938d7fa527e62c13)
+- chore: remove pass without tests option in test script [`5669560`](https://github.com/eels/next-purge-css-modules/commit/5669560fade4280c42ce7d7e8731a930a0fa395c)
+- chore: update next peer dependency bounding version [`fe7b797`](https://github.com/eels/next-purge-css-modules/commit/fe7b7978c8f0e2381a53bdf8734ce0523c10b8ad)
+- docs: add badges to readme [`bad996c`](https://github.com/eels/next-purge-css-modules/commit/bad996cc445e9df9294f204a812a8634af6d4c1f)
+- docs: add initial usage documentation to readme [`3ca39f2`](https://github.com/eels/next-purge-css-modules/commit/3ca39f2f9b5cfb412f57b91fd0ebb0527faf81f1)
+- docs: add keyswords to package.json [`273c8d2`](https://github.com/eels/next-purge-css-modules/commit/273c8d2b907a04639b7474db3f05bdc3b15dad9e)
+- docs: update v1.0.0 changelog [`0209cb0`](https://github.com/eels/next-purge-css-modules/commit/0209cb02089074c9a98c54291e71c6b4bd32b8fb)
+- fix: add mock clean up code to lib/createLoader test suite [`029de7a`](https://github.com/eels/next-purge-css-modules/commit/029de7a8d9e998d3d366f6c8c216cc063e433c32)
+- fix: update .lintstagedrc.json file glob [`0aad6ad`](https://github.com/eels/next-purge-css-modules/commit/0aad6ad35d146776869387cf0ae340a9532bb522)
+
 ## v1.0.0 - 2022-01-15
 
 ### Commits
