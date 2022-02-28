@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.0](https://github.com/eels/next-purge-css-modules/compare/v1.0.1...v1.1.0) - 2022-02-28
+
+### Commits
+
+- build: remove unneeded dependencies and update eslint config to match [`75a2970`](https://github.com/eels/next-purge-css-modules/commit/75a2970ddb87ca7e424e620a7be199b180decac9)
+- build(deps): bump actions/setup-node from 2.5.1 to 3 [`313aa6f`](https://github.com/eels/next-purge-css-modules/commit/313aa6f4425566e10b63ca44ccfc4d7d27b1ada6)
+- build(deps): bump dependabot/fetch-metadata from 1.1.1 to 1.2.0 [`1980af0`](https://github.com/eels/next-purge-css-modules/commit/1980af0a5baef09faa949450c1eac636cef67686)
+- build(deps): bump dependabot/fetch-metadata from 1.2.0 to 1.2.1 [`7939cac`](https://github.com/eels/next-purge-css-modules/commit/7939cac172751d8f44f3ca29b4e085e9aeed23f6)
+- docs: update v1.0.1 changelog [`12850a3`](https://github.com/eels/next-purge-css-modules/commit/12850a30f6bbda50ab8175653fabed6f846a96a9)
+- feat: allow extra config options to be passed to purge-css loader [`7c22c9b`](https://github.com/eels/next-purge-css-modules/commit/7c22c9ba94476204be12b07d1930e6d3fda270c7)
+
 ## [v1.0.1](https://github.com/eels/next-purge-css-modules/compare/v1.0.0...v1.0.1) - 2022-01-17
 
 ### Commits
