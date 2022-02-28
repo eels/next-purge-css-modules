@@ -9,6 +9,10 @@ export const initialDefaultConfig: Config = {
       path.join(process.cwd(), 'src/pages/**/*.{js,jsx,ts,tsx}'),
     ],
     enableDevPurge: false,
+    fontFace: false,
+    keyframes: false,
+    safelist: ['body', 'html'],
+    variables: false,
   },
 };
 

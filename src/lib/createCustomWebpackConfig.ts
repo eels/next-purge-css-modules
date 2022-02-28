@@ -3,7 +3,6 @@ import type { Config, WebpackConfig, WebpackModuleMultiRule } from '@types';
 
 export default function createCustomWebpackConfig(config: WebpackConfig, nextConfig: Config) {
   const STYLES_LOADER_REGEX = /\/(css|sass)-loader\/(?:cjs|dist|src)/;
-  const paths = nextConfig.purgeCSSModules?.content || [];
   const rules = config.module.rules as WebpackModuleMultiRule[];
   const targetRules = rules.find((rule) => rule.oneOf !== undefined);
   const stylingRules = targetRules?.oneOf?.filter?.(({ use }) => Array.isArray(use)) || [];
@@ -22,11 +21,11 @@ export default function createCustomWebpackConfig(config: WebpackConfig, nextCon
       }
 
       if (/\/css-loader\//.test(loader) && isPureCSSLoader) {
-        use.push(createLoader(paths));
+        use.push(createLoader(nextConfig));
       }
 
       if (/\/sass-loader\//.test(loader)) {
-        use.splice(parseInt(index), 0, createLoader(paths));
+        use.splice(parseInt(index), 0, createLoader(nextConfig));
       }
     }
   }

@@ -61,6 +61,10 @@ This plugin comes preconfigured with some sensible defaults options. However, yo
 interface PurgeCSSModulesOptions {
   content: string | string[];
   enableDevPurge: boolean;
+  fontFace: boolean;
+  keyframes: boolean;
+  safelist: UserDefinedSafelist;
+  variables: boolean;
 }
 ```
 
@@ -72,6 +76,7 @@ const nextConfig = {
   purgeCSSModules: {
     content: path.join(__dirname, 'src/**/*.{js,jsx,ts,tsx}'),
     enableDevPurge: true,
+    safelist: ['body', 'html'],
   }
 };
 
@@ -88,11 +93,29 @@ The default value looks at all JavaScript/TypeScript files in the two default Ne
 
 By default, your css-module code will only be purged when a `production` build is generated. You can set this flag to `true` to enable css-modules purging when running your Next.js project in `development` mode.
 
+### `fontFace`
+
+If there are any unused @font-face rules, setting this flag to `true` will purge them from the final output.
+
+### `keyframes`
+
+Any unused animation keyframes found within your css-module code will be purged from the final output when this flag is set the `true`.
+
+### `safelist`
+
+By supplying an array of css selectors to the `safelist` option, you can tell `next-purge-css-modules` which selectors you wish to ensure are not purged.
+
+To read more about the `safelist` configuration option, you can refer to the official [PurgeCSS documentation](https://purgecss.com/configuration.html).
+
+### `variables`
+
+When you are using Custom Properties (CSS variables), or a library using them such as Bootstrap, setting this flag to `true` will purge them from the final output.
+
 ## Usage With Sass
 
 `next-purge-css-modules` works directly out of the box with Next.js projects set up to use Sass.
 
-You can refer to the [official Next.js Sass documentation](`next-purge-css-modules`) to ensure your project is set up correctly.
+You can refer to the [official Next.js Sass documentation](https://nextjs.org/docs/basic-features/built-in-css-support#sass-support) to ensure your project is set up correctly.
 
 ## Contributing
 

@@ -43,6 +43,6 @@ describe('lib/createCustomWebpackConfig', () => {
     const output = createCustomWebpackConfig(config, nextConfig);
 
     expect(output).toEqual(ValidWebpackConfigOutput);
-    expect(createLoader).toHaveBeenNthCalledWith(2, paths);
+    expect(createLoader).toHaveBeenNthCalledWith(2, nextConfig);
   });
 });

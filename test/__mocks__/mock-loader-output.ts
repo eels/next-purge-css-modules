@@ -9,6 +9,10 @@ export default {
           '@fullhuman/postcss-purgecss',
           {
             content: ['example'],
+            fontFace: false,
+            keyframes: false,
+            safelist: ['body', 'html'],
+            variables: false,
           },
         ],
       ],
