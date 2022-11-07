@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Retrieve Dependabot Pull Request Metadata
         id: dependabot-metadata
-        uses: dependabot/fetch-metadata@v1.3.4
+        uses: dependabot/fetch-metadata@v1.3.5
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
 
