@@ -85,9 +85,9 @@ module.exports = withPurgeCSSModules(nextConfig);
 
 ### `content`
 
-This option tells `next-purge-css-modules` which files to look through to check for unused css-modules. You can either supply these files as absolute paths or as file path globs and can either be a single path or as an array.
+This option tells `next-purge-css-modules` which files to look through to check for unused css-modules. You can either supply these files as absolute paths or as file path globs and they can either be a single path or an array.
 
-The default value looks at all JavaScript/TypeScript files in the two default Next.js pages directorys (`pages/**/*.{js,jsx,ts,tsx}` and `src/pages/**/*.{js,jsx,ts,tsx}`).
+The default value looks at all JavaScript/TypeScript files in the two default Next.js pages directories (`pages/**/*.{js,jsx,ts,tsx}` and `src/pages/**/*.{js,jsx,ts,tsx}`).
 
 ### `enableDevPurge`
 
@@ -95,15 +95,15 @@ By default, your css-module code will only be purged when a `production` build i
 
 ### `fontFace`
 
-If there are any unused @font-face rules, setting this flag to `true` will purge them from the final output.
+If there are any unused @font-face rules, setting this flag to `true` will purge them from the final output. By default is `false`.
 
 ### `keyframes`
 
-Any unused animation keyframes found within your css-module code will be purged from the final output when this flag is set the `true`.
+Any unused animation keyframes found within your css-module code will be purged from the final output when this flag is set to `true`. By default is `false`.
 
 ### `safelist`
 
-By supplying an array of css selectors to the `safelist` option, you can tell `next-purge-css-modules` which selectors you wish to ensure are not purged.
+By supplying an array of CSS selectors to the `safelist` option, you can tell `next-purge-css-modules` which selectors you wish to ensure are not purged. By default is `['body', 'html']`
 
 To read more about the `safelist` configuration option, you can refer to the official [PurgeCSS documentation](https://purgecss.com/configuration.html).
 
