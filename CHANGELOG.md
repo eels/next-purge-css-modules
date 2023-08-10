@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.0](https://github.com/eels/next-purge-css-modules/compare/v1.1.0...v2.0.0) - 2023-08-10
+
+### Merged
+
+- feat!: support next 13 [`#72`](https://github.com/eels/next-purge-css-modules/pull/72)
+
+### Commits
+
+- add default options in README.md [`72cdeb3`](https://github.com/eels/next-purge-css-modules/commit/72cdeb3a24e1aa09acfb8aead6119af035803239)
+- build(deps): bump actions/cache from 2 to 3 [`c2542c8`](https://github.com/eels/next-purge-css-modules/commit/c2542c8d61bea78276ddee142b2265a4f92ef319)
+- build(deps): bump actions/checkout from 2 to 3 [`af2eb05`](https://github.com/eels/next-purge-css-modules/commit/af2eb054b63970ffd1a3ea9e90a053c93b064c63)
+- build(deps): bump dependabot/fetch-metadata from 1.2.1 to 1.3.0 [`3b42e86`](https://github.com/eels/next-purge-css-modules/commit/3b42e86ffc9b4aa4b41f6387229f8800f2b0be4f)
+- build(deps): bump dependabot/fetch-metadata from 1.3.0 to 1.3.1 [`a638b58`](https://github.com/eels/next-purge-css-modules/commit/a638b5840a03a60f50cbaadef5c602b9e0ea2d99)
+- build(deps): bump dependabot/fetch-metadata from 1.3.1 to 1.3.3 [`ba5c479`](https://github.com/eels/next-purge-css-modules/commit/ba5c479f29559c92f22a9f5141aceac40906f17b)
+- build(deps): bump dependabot/fetch-metadata from 1.3.3 to 1.3.4 [`f5ba038`](https://github.com/eels/next-purge-css-modules/commit/f5ba038f1176c5442e665787e84fbe628f29b821)
+- build(deps): bump dependabot/fetch-metadata from 1.3.4 to 1.3.5 [`c0c7489`](https://github.com/eels/next-purge-css-modules/commit/c0c7489eb0c397681a17ad4950b0b6b5631f3bb3)
+- build(deps): bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 [`db6476e`](https://github.com/eels/next-purge-css-modules/commit/db6476e2f60d88ed276cc7e9f37ecf7db53d41ab)
+- build(deps): bump github/codeql-action from 1 to 2 [`f64d877`](https://github.com/eels/next-purge-css-modules/commit/f64d8771cab7e6b7bfbc6fa5c0bc9643eae5c057)
+
 ## [v1.1.0](https://github.com/eels/next-purge-css-modules/compare/v1.0.1...v1.1.0) - 2022-02-28
 
 ### Commits
