@@ -1,38 +1,35 @@
-import createCustomWebpackConfig from '@src/lib/createCustomWebpackConfig';
+import createWebpackConfig from '@src/lib/createWebpackConfig';
 import path from 'path';
-import type { Config, WebpackConfig, WebpackContext } from '@types';
+import type { NextConfig } from 'next/types/index.d';
+import type { PurgeConfig, WebpackConfig, WebpackContext } from '@types';
 
-export const initialDefaultConfig: Config = {
-  purgeCSSModules: {
-    content: [
-      path.join(process.cwd(), 'pages/**/*.{js,jsx,ts,tsx}'),
-      path.join(process.cwd(), 'src/pages/**/*.{js,jsx,ts,tsx}'),
-    ],
-    enableDevPurge: false,
-    fontFace: false,
-    keyframes: false,
-    safelist: ['body', 'html'],
-    variables: false,
-  },
+export const initialDefaultConfig: PurgeConfig = {
+  content: [
+    path.join(process.cwd(), 'app/**/*.{js,jsx,ts,tsx}'),
+    path.join(process.cwd(), 'pages/**/*.{js,jsx,ts,tsx}'),
+    path.join(process.cwd(), 'src/app/**/*.{js,jsx,ts,tsx}'),
+    path.join(process.cwd(), 'src/pages/**/*.{js,jsx,ts,tsx}'),
+  ],
+  enableDevPurge: false,
+  fontFace: false,
+  keyframes: false,
+  safelist: ['body', 'html'],
+  variables: false,
 };
 
-export default function createCustomNextConfig(nextConfig: Config = {}) {
+export default function createCustomNextConfig(purge?: PurgeConfig, next?: NextConfig) {
+  const resolvedPurgeConfig = { ...initialDefaultConfig, ...purge };
+
   return {
-    ...nextConfig,
-
-    purgeCSSModules: {
-      ...initialDefaultConfig.purgeCSSModules,
-      ...nextConfig.purgeCSSModules,
-    },
-
+    ...next,
     webpack: function (config: WebpackConfig, context: WebpackContext) {
-      if (typeof nextConfig.webpack === 'function') {
-        config = nextConfig.webpack(config, context);
+      if (typeof next?.webpack === 'function') {
+        config = next?.webpack(config, context);
       }
 
-      const shouldPurgeCSS = !context.dev || context.config.purgeCSSModules?.enableDevPurge;
+      const shouldPurgeCSS = !context.dev || resolvedPurgeConfig?.enableDevPurge;
 
-      return shouldPurgeCSS ? createCustomWebpackConfig(config, nextConfig) : config;
+      return shouldPurgeCSS ? createWebpackConfig(config, resolvedPurgeConfig) : config;
     },
   };
 }
