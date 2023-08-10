@@ -1,7 +1,7 @@
 import createLoader from '@src/lib/createLoader';
-import type { Config, WebpackConfig, WebpackModuleMultiRule } from '@types';
+import type { PurgeConfig, WebpackConfig, WebpackModuleMultiRule } from '@types';
 
-export default function createCustomWebpackConfig(config: WebpackConfig, nextConfig: Config) {
+export default function createWebpackConfig(config: WebpackConfig, purgeConfig: PurgeConfig) {
   const STYLES_LOADER_REGEX = /\/(css|sass)-loader\/(?:cjs|dist|src)/;
   const rules = config.module.rules as WebpackModuleMultiRule[];
   const targetRules = rules.find((rule) => rule.oneOf !== undefined);
@@ -21,11 +21,11 @@ export default function createCustomWebpackConfig(config: WebpackConfig, nextCon
       }
 
       if (/\/css-loader\//.test(loader) && isPureCSSLoader) {
-        use.push(createLoader(nextConfig));
+        use.push(createLoader(purgeConfig));
       }
 
       if (/\/sass-loader\//.test(loader)) {
-        use.splice(parseInt(index), 0, createLoader(nextConfig));
+        use.splice(parseInt(index), 0, createLoader(purgeConfig));
       }
     }
   }

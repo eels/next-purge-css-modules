@@ -1,8 +1,8 @@
 import createGlobPathArray from '@src/lib/createGlobPathArray';
-import type { Config } from '@types';
+import type { PurgeConfig } from '@types';
 
-export default function createLoader(nextConfig: Config) {
-  const content = nextConfig.purgeCSSModules?.content || [];
+export default function createLoader(purgeConfig: PurgeConfig) {
+  const content = purgeConfig?.content || [];
   const contentArray = Array.isArray(content) ? content : [content];
 
   return {
@@ -16,10 +16,10 @@ export default function createLoader(nextConfig: Config) {
             '@fullhuman/postcss-purgecss',
             {
               content: createGlobPathArray(contentArray),
-              fontFace: nextConfig.purgeCSSModules?.fontFace,
-              keyframes: nextConfig.purgeCSSModules?.keyframes,
-              safelist: nextConfig.purgeCSSModules?.safelist,
-              variables: nextConfig.purgeCSSModules?.variables,
+              fontFace: purgeConfig?.fontFace,
+              keyframes: purgeConfig?.keyframes,
+              safelist: purgeConfig?.safelist,
+              variables: purgeConfig?.variables,
             },
           ],
         ],

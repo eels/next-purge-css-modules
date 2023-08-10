@@ -46,25 +46,28 @@ If your Next.js project does not already contain one, create a `next.config.js` 
 ```js
 const withPurgeCSSModules = require('next-purge-css-modules');
 
-const nextConfig = { ... };
+/** @type {import('next-purge-css-modules').PurgeConfig} */
+const purgeConfig = { ... };
 
-module.exports = withPurgeCSSModules(nextConfig);
+module.exports = withPurgeCSSModules(purgeConfig);
 ```
 
 You can read more about the advanced configuration of Next.js on the [official documentation site](https://nextjs.org/docs/api-reference/next.config.js/introduction).
 
 ## Configuration
 
-This plugin comes preconfigured with some sensible defaults options. However, you are free to alter this configuration to suit your project needs with the use of the custom next config object via the `next.config.js` file.
+This plugin comes preconfigured with some sensible defaults options. However, you are free to alter this configuration to suit your project needs with the use of the custom purge config object via the `next.config.js` file.
+
+Additionally, you can also pass your custom next config object as the function's second argument.
 
 ```ts
 interface PurgeCSSModulesOptions {
-  content: string | string[];
-  enableDevPurge: boolean;
-  fontFace: boolean;
-  keyframes: boolean;
-  safelist: UserDefinedSafelist;
-  variables: boolean;
+  content?: string | string[];
+  enableDevPurge?: boolean;
+  fontFace?: boolean;
+  keyframes?: boolean;
+  safelist?: UserDefinedSafelist;
+  variables?: boolean;
 }
 ```
 
@@ -72,22 +75,26 @@ interface PurgeCSSModulesOptions {
 const path = require('path');
 const withPurgeCSSModules = require('next-purge-css-modules');
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  purgeCSSModules: {
-    content: path.join(__dirname, 'src/**/*.{js,jsx,ts,tsx}'),
-    enableDevPurge: true,
-    safelist: ['body', 'html'],
-  }
+  ...
 };
 
-module.exports = withPurgeCSSModules(nextConfig);
+/** @type {import('next-purge-css-modules').PurgeConfig} */
+const purgeConfig = {
+  content: path.join(__dirname, 'src/**/*.{js,jsx,ts,tsx}'),
+  enableDevPurge: true,
+  safelist: ['body', 'html'],
+};
+
+module.exports = withPurgeCSSModules(purgeConfig, nextConfig);
 ```
 
 ### `content`
 
 This option tells `next-purge-css-modules` which files to look through to check for unused css-modules. You can either supply these files as absolute paths or as file path globs and they can either be a single path or an array.
 
-The default value looks at all JavaScript/TypeScript files in the two default Next.js pages directories (`pages/**/*.{js,jsx,ts,tsx}` and `src/pages/**/*.{js,jsx,ts,tsx}`).
+The default value looks at all JavaScript/TypeScript files in the default Next.js pages directories (`app/**/*.{js,jsx,ts,tsx}`, `pages/**/*.{js,jsx,ts,tsx}`, `src/app/**/*.{js,jsx,ts,tsx}` and `src/pages/**/*.{js,jsx,ts,tsx}`).
 
 ### `enableDevPurge`
 
