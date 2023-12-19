@@ -17,7 +17,7 @@
   "exports": {
     ".": {
       "umd": "./dist/next-purge-css-modules.umd.js",
-      "import": "./dist/next-purge-css-modules.mjs",
+      "import": "./dist/next-purge-css-modules.module.js",
       "require": "./dist/next-purge-css-modules.cjs"
     }
   },
