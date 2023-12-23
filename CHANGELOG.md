@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.1](https://github.com/eels/next-purge-css-modules/compare/v2.0.0...v2.0.1) - 2023-12-23
+
+### Commits
+
+- docs: update v2.0.0 changelog [`738629b`](https://github.com/eels/next-purge-css-modules/commit/738629b3a91243e132db8204912a3078c4ff0f20)
+- fix: update the module export to the new naming scheme [`5dfe918`](https://github.com/eels/next-purge-css-modules/commit/5dfe9188d20b4e1d13b63cc6d566dfa7eb475305)
+
 ## [v2.0.0](https://github.com/eels/next-purge-css-modules/compare/v1.1.0...v2.0.0) - 2023-08-10
 
 ### Merged
